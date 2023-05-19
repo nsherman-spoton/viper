@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/spf13/viper/internal/testutil"
+	"github.com/nsherman-spoton/viper/internal/testutil"
 )
 
 func TestCopyAndInsensitiviseMap(t *testing.T) {
