@@ -31,6 +31,10 @@ func (Codec) Encode(v map[string]interface{}) ([]byte, error) {
 	var buf bytes.Buffer
 
 	for _, key := range keys {
+		strVal, ok := flattened[key].(string)
+		if ok { // If value is a string, escape new line characters
+			flattened[key]=strings.Replace(strVal, "\n", "\\n", -1)
+		}
 		_, err := buf.WriteString(fmt.Sprintf("%v=%v\n", strings.ToUpper(key), flattened[key]))
 		if err != nil {
 			return nil, err
